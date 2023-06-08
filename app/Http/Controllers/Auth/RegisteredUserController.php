@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -36,9 +37,17 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $response = $this->generateEmail($request->email);
+
+        while(User::where('new_email',$response['newEmail'])->exists()){
+            $response = $this->generateEmail($request->email);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'new_email' => $response['newEmail'],
+            'original_domain' => $response['original_domain'],
             'password' => Hash::make($request->password),
         ]);
 
@@ -47,6 +56,22 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    private function generateEmail($originalEmail)
+    {
+        $userEmail = $originalEmail;
+        $userEmail = strstr($userEmail, '@', true);
+        $emailArray = [
+            "rand" => rand(11,999),
+            "uniqid" => bin2hex(random_bytes(2)),
+            "email" => $userEmail,
+        ];
+        shuffle($emailArray);
+        $userEmail = implode('_', $emailArray);
+        $response['newEmail'] = $userEmail.'@'.env('APP_DOMAIN');
+        $response['original_domain'] = $userEmail.'@'.env('APP_URL');
+        return $response;
     }
 
     //
