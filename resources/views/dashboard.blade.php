@@ -43,28 +43,28 @@
 
 </x-app-layout>
 
-//Composer
-<div id="composeModal" class="fixed inset-0 flex items-center justify-center z-10 hidden">
+
+<div id="composeModal" class="fixed inset-0 flex items-end justify-end z-10 hidden">
 
         <div class="bg-white p-6 rounded-lg shadow-lg w-2/4">
             <div class="flex items-center">
 
                 <div class="ml-4">
-                    <h2 class="text-lg font-semibold text-gray-900">Compose Email</h2>
+                    <h2 class="text-lg font-semibold text-gray-900">New Email</h2>
                     <p class="text-sm text-gray-500">From: <span class="font-medium">{{auth()->user()->new_email}}</span></p>
                 </div>
             </div>
             <div class="mt-6">
-                <input type="text" class="w-full bg-gray-100  text-gray-900 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="To">
+                <input type="text" class="w-full bg-gray-100  text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="To">
             </div>
             <div class="mt-4">
-                <input type="text" class="w-full bg-gray-100  text-gray-900  rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Subject">
+                <input type="text" class="w-full bg-gray-100  text-gray-900  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Subject">
             </div>
             <div class="mt-4">
-                <textarea class="w-full bg-gray-100  text-gray-900  rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Message" rows="6"></textarea>
+                <textarea class="w-full bg-gray-100  text-gray-900  rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Message" rows="6"></textarea>
             </div>
             <div class="mt-6 flex justify-end">
-                <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Send</button>
+                <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Send</button>
             </div>
         </div>
 
