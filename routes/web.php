@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MailSetupController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[WebController::class,'index']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/mail-setting', [MailSetupController::class, 'edit'])->name('mail.config.edit');
     Route::patch('/mail-setting', [MailSetupController::class, 'update'])->name('mail.config.update');
+
+    //Send Mail
+    Route::post('/mail-send', [MailController::class, 'send'])->name('mail.send');
 });
 
 require __DIR__.'/auth.php';
