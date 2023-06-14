@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 // use Laravel\Passport\HasApiTokens;
+use App\Models\Userdetails;
 
 class User extends Authenticatable
 {
@@ -47,6 +48,6 @@ class User extends Authenticatable
 
     public function userDetail()
     {
-        return $this->hasOne(Userdetails::class, 'user_id');
+        return $this->hasOne(Userdetails::class);
     }
 }

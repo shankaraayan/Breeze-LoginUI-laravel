@@ -20,7 +20,7 @@
                 <div class="carousel-item @php if($banner->id == 1)echo 'active' @endphp">
                     <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                                                                                                                                                             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"> -->
-                    <img src="/storage/{{ $banner->img }}">
+                    <img src="{{env('APP_DOMAIN')}}/storage/{{ $banner->img }}">
                     <!-- </svg> -->
 
                     <div class="container">
@@ -58,7 +58,7 @@
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <img class="img-fluid img-thumbnail"
-                                    src='{{ env('APP_URL') . '/storage/' . $blog->image[0] }}'>
+                                    src='{{ env('APP_DOMAIN') . '/storage/' . $blog->image[0] }}'>
                                 <h3 class="card-title mt-2">{{ $blog->title }}</h3>
                                 <div class="card-text text-truncate">
                                     {{ $blog->description }}

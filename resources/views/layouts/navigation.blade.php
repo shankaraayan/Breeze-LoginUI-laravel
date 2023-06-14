@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 text-gray-800 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Inbox') }}
+                        {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -38,8 +38,8 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('mail.config.edit')">
-                            {{ __('Mail Setting') }}
+                        <x-dropdown-link :href="route('apply.post.edit')">
+                            {{ __('Apply For Post') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

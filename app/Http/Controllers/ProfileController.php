@@ -20,20 +20,65 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
-
     /**
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
-        if ($request->user()->isDirty('new_email')) {
+        if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    public function update_photo(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'photo' => 'required|image', // Adjust the maximum file size as needed
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('members', 'public'); // Store the uploaded file in the 'public' disk under the 'photos' directory
+            $request->user()->userDetail()->updateOrCreate(
+                [
+                    'user_id' => auth()->user()->id,
+                    'photo' => $path
+                ]); // Update the 'photo' column of the authenticated user with the file path
+        }
+
+        return Redirect::route('profile.edit')->with('status', 'saved');
+    }
+
+    public function update_aadhar(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'aadhar_no' => 'required|integer|min:12', // Adjust the maximum file size as needed
+        ]);
+        // dd($request->all());
+
+        $request->user()->userDetail()->updateOrCreate(
+            [
+                'user_id' => auth()->user()->id,
+            ],
+            [
+                'user_id' => auth()->user()->id,
+                'aadhar_no' => $request->aadhar_no
+            ]);
+
+        if ($request->hasFile('aadhar_f')) {
+            $path = $request->file('aadhar_f')->store('members', 'public'); // Store the uploaded file in the 'public' disk under the 'photos' directory
+            $request->user()->userDetail->update(['aadhar_f' => $path]); // Update the 'photo' column of the authenticated user with the file path
+        }
+
+        if ($request->hasFile('aadhar_b')) {
+            $path = $request->file('aadhar_b')->store('members', 'public'); // Store the uploaded file in the 'public' disk under the 'photos' directory
+            $request->user()->userDetail->update(['aadhar_b' => $path]); // Update the 'photo' column of the authenticated user with the file path
+        }
+
+        return Redirect::route('profile.edit')->with('status', 'saved');
     }
 
     /**

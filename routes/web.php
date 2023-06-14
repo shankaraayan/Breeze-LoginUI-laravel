@@ -30,10 +30,15 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile-update-picture', [ProfileController::class, 'update_photo'])->name('profile.update.photo');
+    Route::patch('/profile-update-aadhar', [ProfileController::class, 'update_aadhar'])->name('update.aadhar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/mail-setting', [MailSetupController::class, 'edit'])->name('mail.config.edit');
-    Route::patch('/mail-setting', [MailSetupController::class, 'update'])->name('mail.config.update');
+    Route::get('/apply-post', [MailSetupController::class, 'edit'])->name('apply.post.edit');
+    Route::patch('/apply-post', [MailSetupController::class, 'update'])->name('apply.post.update');
+
+    Route::get('/my-code', [ProfileController::class, 'CodeEdit'])->name('my.code.edit');
+    Route::patch('/my-code', [ProfileController::class, 'CodeUpdate'])->name('my.code.update');
 
     //Send Mail
     Route::post('/mail-send', [MailController::class, 'send'])->name('mail.send');
