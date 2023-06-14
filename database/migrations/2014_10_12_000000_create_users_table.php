@@ -8,27 +8,32 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('new_email')->unique()->nullable();
-            $table->string('original_domain')->unique()->nullable();
+            $table->string('email')->nullable()->unique();
+            $table->string('mobile')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('my_referral')->nullable()->unique();
+            $table->enum('role', ['admin', 'user']);
+            $table->enum('status', ['active', 'inactive']);
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
     }

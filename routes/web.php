@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/password', [ProfileController::class, 'password_edit'])->name('password.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile-update-picture', [ProfileController::class, 'update_photo'])->name('profile.update.photo');
     Route::patch('/profile-update-aadhar', [ProfileController::class, 'update_aadhar'])->name('update.aadhar');
@@ -45,5 +46,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-

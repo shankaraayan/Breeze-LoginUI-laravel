@@ -20,6 +20,20 @@ class ProfileController extends Controller
             'user' => $request->user(),
         ]);
     }
+
+    public function password_edit(Request $request): View
+    {
+        return view('profile.password-edit', [
+            'user' => $request->user(),
+        ]);
+    }
+
+    public function CodeEdit(): View
+    {
+        return view('profile.referral-code', [
+
+        ]);
+    }
     /**
      * Update the user's profile information.
      */

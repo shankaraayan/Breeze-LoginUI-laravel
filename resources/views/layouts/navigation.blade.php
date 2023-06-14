@@ -52,6 +52,11 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+
+                        <x-dropdown-link :href="route('password.edit')">
+                            {{ __('Change Password') }}
+                        </x-dropdown-link>
+
                     </x-slot>
                 </x-dropdown>
             </div>

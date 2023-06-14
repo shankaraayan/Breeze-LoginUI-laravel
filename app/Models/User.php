@@ -25,6 +25,7 @@ class User extends Authenticatable
         'mobile',
         'role',
         'status',
+        'my_referral',
     ];
 
     /**
