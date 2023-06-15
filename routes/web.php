@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\MailSetupController;
+use App\Http\Controllers\WorkPostSetupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile-update-aadhar', [ProfileController::class, 'update_aadhar'])->name('update.aadhar');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/apply-post', [MailSetupController::class, 'edit'])->name('apply.post.edit');
-    Route::patch('/apply-post', [MailSetupController::class, 'update'])->name('apply.post.update');
+    Route::get('/apply-post', [WorkPostSetupController::class, 'edit'])->name('apply.post.edit');
+    Route::patch('/apply-post', [WorkPostSetupController::class, 'update'])->name('apply.post.update');
 
     Route::get('/my-code', [ProfileController::class, 'CodeEdit'])->name('my.code.edit');
     Route::patch('/my-code', [ProfileController::class, 'CodeUpdate'])->name('my.code.update');

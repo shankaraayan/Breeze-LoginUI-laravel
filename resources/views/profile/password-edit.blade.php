@@ -2,18 +2,9 @@
     <x-slot name="header">
         <div class="flex items-center">
             <h2 class="font-semibold text-xl text-gray-800  leading-tight">
-                {{ __('Profile') }}
+                {{ __('Password Update') }}
             </h2>
-            <div class="w-12 h-12 rounded-2xl ml-2">
-                @php
-                    if (isset($user->userDetail->photo)) {
-                        $photo = env('APP_URL') . '/storage/' . $user->userDetail->photo;
-                    } else {
-                        $photo = 'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg';
-                    }
-                @endphp
-                <img class="object-fill" src="{{ @$photo }}" />
-            </div>
+
         </div>
 
     </x-slot>

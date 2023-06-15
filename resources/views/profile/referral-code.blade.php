@@ -1,19 +1,11 @@
 <x-app-layout>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <x-slot name="header">
         <div class="flex items-center">
             <h2 class="font-semibold text-xl text-gray-800  leading-tight">
                 {{ __('My Referral') }}
             </h2>
-            <div class="w-12 h-12 rounded-2xl ml-2">
-                @php
-                    if (isset($user->userDetail->photo)) {
-                        $photo = env('APP_URL') . '/storage/' . $user->userDetail->photo;
-                    } else {
-                        $photo = 'https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg';
-                    }
-                @endphp
-                <img class="object-fill" src="{{ @$photo }}" />
-            </div>
+
         </div>
 
     </x-slot>
@@ -27,7 +19,7 @@
 
                 <div class="max-w-xl p-2 flex items-center justify-center">
                     <div class="self-auto">
-                        <x-secondary-button class="text-base px-4 py-2 rounded-lg">
+                        <x-secondary-button class="text-base px-4 py-2 rounded-lg" id="copyReferralButton">
                             {{ auth()->user()->my_referral }}
                         </x-secondary-button>
                     </div>
@@ -37,4 +29,26 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var copyReferralButton = document.getElementById('copyReferralButton');
+            var referralText = copyReferralButton.getAttribute('data-referral');
+
+            // Initialize clipboard.js
+            new ClipboardJS(copyReferralButton, {
+                text: function () {
+                    return referralText;
+                }
+            });
+
+            // Add event listener for the copy action
+            copyReferralButton.addEventListener('click', function () {
+                // Add any additional logic or visual feedback you want here
+                console.log('Text copied!');
+            });
+        });
+    </script>
+
+
 </x-app-layout>

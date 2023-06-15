@@ -22,28 +22,25 @@
             </ul>
         </div>
         <div class="col-span-4 p-3 bg-white sm:rounded-lg">
-            <div class="pl-2 pb-2">
-                <Input type="checkbox">
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                    <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg grid grid-cols-2">
+                        <div class="max-w-xl p-2">
+                            @include('profile.partials.referral-user-code')
+                        </div>
 
+                        <div class="max-w-xl p-2 flex items-center justify-center">
+                            <div class="self-auto">
+                                <x-secondary-button class="text-base px-4 py-2 rounded-lg">
+                                    {{ auth()->user()->my_referral }}
+                                </x-secondary-button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <table class="table-auto w-full border-collapse border">
-                <tbody>
-                    <tr class="border hover:bg-gray-100 ">
-                        <td class="p-2"><Input type="checkbox"></td>
-                        <td class="p-2">Account Confirmation State Bank...</td>
-                        <td class="p-2">Re: Es gibt neues zu Ihre Anfrage [#12556] bei dem GLS Support - Anfrage
-                            Kontaktformular...</td>
-                        <td class="p-2">11:01 am</td>
-                    </tr>
-                    <tr class=" border hover:bg-gray-100 ">
-                        <td class="p-2"><Input type="checkbox"></td>
-                        <td class="p-2">Bank Statment</td>
-                        <td class="p-2">vielen Dank, dass Sie sich als Händler bei Solar Hook</td>
-                        <td class="p-2">03:52 pm</td>
-                    </tr>
-
-                </tbody>
-            </table>
         </div>
     </div>
 

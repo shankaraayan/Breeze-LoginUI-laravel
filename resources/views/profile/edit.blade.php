@@ -26,7 +26,7 @@
                         Profile - {{ ucFirst($user->status) }}
                     </span>
                 @else
-                    <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
+                    <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
                         Profile - {{ $user->status }}
                     </span>
                 @endif

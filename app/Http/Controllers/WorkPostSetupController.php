@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserMailSetup;
+use App\Models\UserWorkPost;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
-class MailSetupController extends Controller
+class WorkPostSetupController extends Controller
 {
     public function edit(Request $request): View
     {
-        $smtp_details = UserMailSetup::where('user_id',auth()->user()->id)->first();
+        $smtp_details = UserWorkPost::where('user_id',auth()->user()->id)->first();
 
         return view('setting.edit', [
             'user' => $request->user(),
