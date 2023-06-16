@@ -9,11 +9,14 @@
     <div class="p-12 mx-auto sm:px-6 lg:px-8 w-full grid grid-cols-5 gap-2 ">
         <div class="bg-white p-3 sm:rounded-lg">
             <ul class="list-non">
-                <a href="">
-                    <li class="hover:bg-gray-200 p-1 rounded-lg"><a href="{{ route('my.code.edit')}}">My Refrerral Code</a></li>
+                <a href="{{ route('my.code.edit') }}">
+                    <li class="hover:bg-gray-200 p-1 rounded-lg">My Refrerral
+                        Code</li>
                 </a>
-                <li class="hover:bg-gray-200 p-1 rounded-lg" >My Team</li>
-                <a href="">
+                <a href="{{ route('my.team.view') }}">
+                    <li class="hover:bg-gray-200 p-1 rounded-lg">My Team</li>
+                </a>
+                <a href="{{ route('apply.post.edit') }}">
                     <li class="hover:bg-gray-200 p-1 rounded-lg">Apply For Post</li>
                 </a>
                 <a href="">

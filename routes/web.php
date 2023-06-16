@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[WebController::class,'index']);
+Route::get('/', [WebController::class, 'index']);
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/apply-post', [WorkPostSetupController::class, 'edit'])->name('apply.post.edit');
     Route::patch('/apply-post', [WorkPostSetupController::class, 'update'])->name('apply.post.update');
+    Route::patch('/apply-post-update-payment', [WorkPostSetupController::class, 'update_payment'])->name('apply.post.update-payment');
+
+    Route::get('/my-team', [WorkPostSetupController::class, 'my_team'])->name('my.team.view');
 
     Route::get('/my-code', [ProfileController::class, 'CodeEdit'])->name('my.code.edit');
     Route::patch('/my-code', [ProfileController::class, 'CodeUpdate'])->name('my.code.update');
@@ -45,4 +48,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/mail-send', [MailController::class, 'send'])->name('mail.send');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

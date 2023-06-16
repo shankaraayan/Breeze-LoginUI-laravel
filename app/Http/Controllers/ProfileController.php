@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\MemberTree;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $myReferral = MemberTree::where('referred_member', auth()->user()->my_referral)->first();
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'mySponser' => $myReferral->referral_by,
         ]);
     }
 
@@ -30,9 +34,7 @@ class ProfileController extends Controller
 
     public function CodeEdit(): View
     {
-        return view('profile.referral-code', [
-
-        ]);
+        return view('profile.referral-code', []);
     }
     /**
      * Update the user's profile information.
@@ -60,7 +62,8 @@ class ProfileController extends Controller
                 [
                     'user_id' => auth()->user()->id,
                     'photo' => $path
-                ]); // Update the 'photo' column of the authenticated user with the file path
+                ]
+            ); // Update the 'photo' column of the authenticated user with the file path
         }
 
         return Redirect::route('profile.edit')->with('status', 'saved');
@@ -71,7 +74,16 @@ class ProfileController extends Controller
         $request->validate([
             'aadhar_no' => 'required|integer|min:12', // Adjust the maximum file size as needed
         ]);
-        // dd($request->all());
+
+        if ($request->referral_by) {
+            MemberTree::updateOrCreate(
+                ['referred_member' => auth()->user()->my_referral],
+                [
+                    'referred_member' => auth()->user()->my_referral,
+                    'referral_by' => $request->referral_by,
+                ]
+            );
+        }
 
         $request->user()->userDetail()->updateOrCreate(
             [
@@ -80,7 +92,8 @@ class ProfileController extends Controller
             [
                 'user_id' => auth()->user()->id,
                 'aadhar_no' => $request->aadhar_no
-            ]);
+            ]
+        );
 
         if ($request->hasFile('aadhar_f')) {
             $path = $request->file('aadhar_f')->store('members', 'public'); // Store the uploaded file in the 'public' disk under the 'photos' directory

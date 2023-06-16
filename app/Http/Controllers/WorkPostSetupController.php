@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MemberTree;
 use App\Models\UserWorkPost;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\RedirectResponse;
@@ -14,34 +15,70 @@ class WorkPostSetupController extends Controller
 {
     public function edit(Request $request): View
     {
-        $smtp_details = UserWorkPost::where('user_id',auth()->user()->id)->first();
+        $application = UserWorkPost::where('user_id', auth()->user()->id)->first();
+        if ($application->status == 'created') {
+            $msg = 'Your Application is submitted, Please Completed your payment for further process. ';
+        } elseif ($application->status == 'paid') {
+            $msg = 'Your payment is done please wait for review.';
+        } elseif ($application->status == 'rejected') {
+            $msg = 'Your application is rejected please contact your upper channel.';
+        } elseif ($application->status == 'refunded') {
+            $msg = 'Your amount is refunded successfully, amount will be credited within 7 Working days';
+        } elseif ($application->status == 'done') {
+            $msg = 'Approved.';
+        } elseif ($application->status == 'failed') {
+            $msg = 'Your payment is failed, please try again';
+        } else {
+            $msg = '';
+        }
+        // dd($msg);
 
-        return view('setting.edit', [
+        return view('apply-post.edit', [
             'user' => $request->user(),
-            'user_smtp' => $smtp_details,
+            'application' => $application,
+            'msg' => $msg,
         ]);
+    }
+
+    public function update_payment()
+    {
+        //
     }
 
     public function update(Request $request): RedirectResponse
     {
-        $validator = Validator::make($request->all(),[
-            "MAIL_SMTP" => 'required|max:4',
-            "MAIL_HOST" => 'required',
-            "MAIL_PORT" => 'required|integer',
-            "MAIL_USERNAME" => 'required',
-            "MAIL_PASSWORD" => 'required',
-            "MAIL_ENCRYPTION" => 'required',
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            "pincode" => 'required',
+            "district" => 'required',
+            "apply_for" => 'required',
+            "donation" => 'required',
         ]);
+
         if ($validator->fails()) {
-            // Redirect or return the user back with the validation errors
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-    $userMailSetting = UserMailSetup::updateOrCreate(
-        ['user_id' => auth()->user()->id],
-        $request->all()
-    );
+        $userMailSetting = UserWorkPost::updateOrCreate(
+            ['user_id' => auth()->user()->id],
+            $request->all()
+        );
 
-        return Redirect::route('mail.config.edit')->with('status', 'updated');
+        return Redirect::route('apply.post.edit')->with('status', 'updated');
+    }
+
+    public function my_team(Request $request)
+    {
+        $members = MemberTree::where('referral_by', auth()->user()->my_referral)
+            ->with([
+                'referred_users',
+                'referred_users.userDetail',
+            ])
+            ->get();
+        // dd($members->toarray());
+        return view('my-team.view', [
+            'user' => $request->user(),
+            'members' => $members
+        ]);
     }
 }
