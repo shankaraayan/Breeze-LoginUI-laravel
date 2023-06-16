@@ -15,15 +15,19 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg grid grid-cols-2">
                 <div class="max-w-xl p-2">
                     @include('profile.partials.referral-user-code')
+
+                    <p class="text-green-900" id="copy-message"></p>
+
+
                 </div>
 
                 <div class="max-w-xl p-2 flex items-center justify-center">
                     <div class="self-auto">
-                        <x-secondary-button class="text-base px-4 py-2 rounded-lg" id="copyReferralButton">
+                        <x-secondary-button class="text-base px-4 py-2 rounded-lg" id="copyReferralButton"
+                            data-referral="{{ auth()->user()->my_referral }}">
                             {{ auth()->user()->my_referral }}
                         </x-secondary-button>
                     </div>
-
                 </div>
 
             </div>
@@ -31,21 +35,20 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var copyReferralButton = document.getElementById('copyReferralButton');
             var referralText = copyReferralButton.getAttribute('data-referral');
 
             // Initialize clipboard.js
             new ClipboardJS(copyReferralButton, {
-                text: function () {
+                text: function() {
                     return referralText;
                 }
             });
 
-            // Add event listener for the copy action
-            copyReferralButton.addEventListener('click', function () {
-                // Add any additional logic or visual feedback you want here
-                console.log('Text copied!');
+            copyReferralButton.addEventListener('click', function() {
+                const messageElement = document.getElementById('copy-message');
+                messageElement.textContent = 'Text copied!';
             });
         });
     </script>
