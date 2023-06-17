@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MemberTree;
+use App\Models\User;
 use App\Models\UserWorkPost;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\RedirectResponse;
@@ -59,7 +60,13 @@ class WorkPostSetupController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $userMailSetting = UserWorkPost::updateOrCreate(
+        $my_referral_code = $request->apply_for . rand(111, 9999);
+
+        User::whereId(auth()->user()->id)->update([
+            'my_referral' => $my_referral_code,
+        ]);
+
+        $userPost = UserWorkPost::updateOrCreate(
             ['user_id' => auth()->user()->id],
             $request->all()
         );

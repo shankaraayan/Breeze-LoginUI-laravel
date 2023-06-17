@@ -20,15 +20,20 @@
 
 
                 </div>
-
-                <div class="max-w-xl p-2 flex items-center justify-center">
-                    <div class="self-auto">
-                        <x-secondary-button class="text-base px-4 py-2 rounded-lg" id="copyReferralButton"
-                            data-referral="{{ auth()->user()->my_referral }}">
-                            {{ auth()->user()->my_referral }}
-                        </x-secondary-button>
+                @if (auth()->user()->my_referral)
+                    <div class="max-w-xl p-2 flex items-center justify-center">
+                        <div class="self-auto">
+                            <x-secondary-button class="text-base px-4 py-2 rounded-lg" id="copyReferralButton"
+                                data-referral="{{ auth()->user()->my_referral }}">
+                                {{ auth()->user()->my_referral }}
+                            </x-secondary-button>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <h2 class="text-lg font-medium text-gray-900 ">
+                        {{ __('Please apply for a post to generate your sponser code.') }}
+                    </h2>
+                @endif
 
             </div>
         </div>
