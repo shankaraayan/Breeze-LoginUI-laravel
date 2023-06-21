@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-code', [ProfileController::class, 'CodeEdit'])->name('my.code.edit');
     Route::patch('/my-code', [ProfileController::class, 'CodeUpdate'])->name('my.code.update');
 
+    Route::get('/bank-details', [ProfileController::class, 'view_bank'])->name('bank.details.view');
+    Route::patch('/bank-details', [ProfileController::class, 'bank_update'])->name('bank.update');
     //Send Mail
     Route::post('/mail-send', [MailController::class, 'send'])->name('mail.send');
 });

@@ -19,7 +19,7 @@
                 <a href="{{ route('apply.post.edit') }}">
                     <li class="hover:bg-gray-200 p-1 rounded-lg">Apply For Post</li>
                 </a>
-                <a href="">
+                <a href="{{ route('bank.details.view') }}">
                     <li class="hover:bg-gray-200 p-1 rounded-lg">Bank Details</li>
                 </a>
             </ul>

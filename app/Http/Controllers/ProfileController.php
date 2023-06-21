@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\BankDetails;
 use App\Models\MemberTree;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class ProfileController extends Controller
 
         return view('profile.edit', [
             'user' => $request->user(),
-            'mySponser' => $myReferral->referral_by,
+            'mySponser' => $myReferral->referral_by ?? 'NA',
         ]);
     }
 
@@ -106,6 +107,16 @@ class ProfileController extends Controller
         }
 
         return Redirect::route('profile.edit')->with('status', 'saved');
+    }
+
+    public function view_bank(Request $request)
+    {
+        $bankDetails = BankDetails::where('user_id',auth()->user()->id)->first();
+
+        return view('bank-details.view', [
+            'user' => $request->user(),
+            'bankDetails' => $bankDetails,
+        ]);
     }
 
     /**
