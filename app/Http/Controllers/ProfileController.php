@@ -119,6 +119,20 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function bank_update(Request $request)
+    {
+        $request->user()->bankDetails()->updateOrCreate(
+            [
+                'user_id' => auth()->user()->id,
+                'bank_name' => $request->bank_name,
+                'account_no' => $request->account_no,
+                'ifsc' => $request->ifsc,
+                'account_holder' => $request->account_holder,
+            ]
+        );
+        return Redirect::route('bank.details.view')->with('status', 'saved');
+    }
+
     /**
      * Delete the user's account.
      */

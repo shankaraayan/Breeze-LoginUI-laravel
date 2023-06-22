@@ -6,15 +6,17 @@
                 <td>Bank</td>
                 <td>Account No.</td>
                 <td>IFSC</td>
+                <td>Verification</td>
             </tr>
         </thead>
         <tbody>
 
                 <tr class="hover:bg-gray-200 p-2">
-                    <td>{{ $bankDetails->name ?? 'NA' }}</td>
+                    <td>{{ $bankDetails->account_holder ?? 'NA' }}</td>
                     <td>{{ $bankDetails->bank_name ?? 'NA' }}</td>
                     <td>{{ $bankDetails->account_no ?? 'NA' }}</td>
                     <td>{{ $bankDetails->ifsc ?? 'NA' }}</td>
+                    <td>{{ $bankDetails->status ?? 'NA' }}</td>
                 </tr>
 
         </tbody>
