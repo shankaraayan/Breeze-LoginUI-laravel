@@ -18,10 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WebController::class, 'index']);
+Route::get('/about', [WebController::class, 'about']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

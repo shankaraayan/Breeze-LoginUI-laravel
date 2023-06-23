@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Banner;
 use App\Models\BharatKeDham;
 use App\Models\HomePage;
@@ -28,7 +29,9 @@ class WebController extends Controller
 
     public function about()
     {
-        return "About Page";
+        $about = AboutUs::get();
+        // dd($about);
+        return view('about')->with(compact('about'));
     }
     public function contact()
     {
