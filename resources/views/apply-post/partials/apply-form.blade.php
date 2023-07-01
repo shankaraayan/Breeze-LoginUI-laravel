@@ -49,10 +49,10 @@
         <div>
             <x-input-label for="donation" :value="__('Donation Amount')" />
             <x-text-input id="donation" name="donation" type="number" class="mt-1 block w-full"
-                placeholder="min 100.00 /-" />
+                placeholder="Min 100.00 /-" />
             <x-input-error class="mt-2" :messages="$errors->get('donation')" />
         </div>
-        {{ __('(Joining fees - 251 /- is manadetry.)') }}
+        {{-- __('(Joining fees - 251 /- is manadetry.)') --}}
         <div class="flex items-center gap-4">
             <x-primary-button :disabled="$application->status !== null">{{ __('Apply') }}</x-primary-button>
 

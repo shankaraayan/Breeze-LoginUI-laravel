@@ -36,7 +36,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/apply-post', [WorkPostSetupController::class, 'edit'])->name('apply.post.edit');
     Route::patch('/apply-post', [WorkPostSetupController::class, 'update'])->name('apply.post.update');
-    Route::patch('/apply-post-update-payment', [WorkPostSetupController::class, 'update_payment'])->name('apply.post.update-payment');
+    Route::post('/apply-post-update-payment', [WorkPostSetupController::class, 'update_payment'])->name('apply.post.update-payment');
+    Route::patch('/apply-post-payment-success', [WorkPostSetupController::class, 'paymentsuccess'])->name('apply.post.paymentsuccess-payment');
 
     Route::get('/my-team', [WorkPostSetupController::class, 'my_team'])->name('my.team.view');
 
