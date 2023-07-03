@@ -88,7 +88,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">{{env('APP_NAME')}}</a>
+            <a class="navbar-brand" href="/">{{ env('APP_NAME') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -105,36 +105,42 @@
                         <a class="nav-link" href="/event">Events</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/donate">Donate</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/gallery">Gallery</a>
                     </li>
                 </ul>
                 @if (Route::has('login'))
-                <span class="navbar-text">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <span class="navbar-text">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                        @auth
-                            <li class="nav-item" style="padding: 0px 10px;">
-                                <a style="color:white" aria-current="page" href="dashboard">
-                                    {{ substr(Auth::user()->name, 0, strpos(Auth::user()->name, ' ')) }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <span class="text round-btn"><a href="{{route('logout')}}" style="color:white"> Logout </a></span>
-                            </li>
-                        @endauth
-                        @guest
-                            <li class="nav-item mr-3" style="margin-right: 12px">
-                                <a class="" style="color:white" aria-current="page" href="{{ route('login') }}">Login Portal</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a style="color:white" aria-current="page" href="{{ route('register') }}">Apply for Post</a>
+                            @auth
+                                <li class="nav-item" style="padding: 0px 10px;">
+                                    <a style="color:white" aria-current="page" href="dashboard">
+                                        {{ substr(Auth::user()->name, 0, strpos(Auth::user()->name, ' ')) }}
+                                    </a>
                                 </li>
-                            @endif
-                        @endguest
+                                <li class="nav-item">
+                                    <span class="text round-btn"><a href="{{ route('logout') }}" style="color:white"> Logout
+                                        </a></span>
+                                </li>
+                            @endauth
+                            @guest
+                                <li class="nav-item mr-3" style="margin-right: 12px">
+                                    <a class="" style="color:white" aria-current="page"
+                                        href="{{ route('login') }}">Login Portal</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a style="color:white" aria-current="page" href="{{ route('register') }}">Apply for
+                                            Post</a>
+                                    </li>
+                                @endif
+                            @endguest
 
-                    </ul>
-                </span>
+                        </ul>
+                    </span>
                 @endif
             </div>
         </div>

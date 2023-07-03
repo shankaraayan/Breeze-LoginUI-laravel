@@ -1,4 +1,5 @@
 <section class="space-y-6">
+    <a href="{{ route('edit.bank') }}">Edit</a>
     <table class="table-auto w-full text-lg">
         <thead>
             <tr class="bg-gray-100 ">
@@ -11,13 +12,13 @@
         </thead>
         <tbody>
 
-                <tr class="hover:bg-gray-200 p-2">
-                    <td>{{ $bankDetails->account_holder ?? 'NA' }}</td>
-                    <td>{{ $bankDetails->bank_name ?? 'NA' }}</td>
-                    <td>{{ $bankDetails->account_no ?? 'NA' }}</td>
-                    <td>{{ $bankDetails->ifsc ?? 'NA' }}</td>
-                    <td>{{ $bankDetails->status ?? 'NA' }}</td>
-                </tr>
+            <tr class="hover:bg-gray-200 p-2">
+                <td>{{ $bankDetails->account_holder ?? 'NA' }}</td>
+                <td>{{ $bankDetails->bank_name ?? 'NA' }}</td>
+                <td>{{ $bankDetails->account_no ?? 'NA' }}</td>
+                <td>{{ $bankDetails->ifsc ?? 'NA' }}</td>
+                <td>{{ $bankDetails->status ?? 'NA' }}</td>
+            </tr>
 
         </tbody>
     </table>

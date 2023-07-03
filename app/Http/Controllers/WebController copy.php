@@ -43,13 +43,7 @@ class WebController extends Controller
     public function gallery()
     {
         $gallery = Gallery::get();
-        // dd($gallery);
         return view('gallery')->with(compact('gallery'));
-    }
-
-    public function donate()
-    {
-        return view('donate');
     }
     public function contact()
     {

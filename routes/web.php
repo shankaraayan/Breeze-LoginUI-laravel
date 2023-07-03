@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index']);
 Route::get('/about', [WebController::class, 'about']);
+Route::get('/event', [WebController::class, 'event']);
+Route::get('/gallery', [WebController::class, 'gallery']);
+Route::get('/donate', [WebController::class, 'donate']);
 
 
 
@@ -46,7 +49,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/bank-details', [ProfileController::class, 'view_bank'])->name('bank.details.view');
     Route::patch('/bank-details', [ProfileController::class, 'bank_update'])->name('bank.update');
-    //Send Mail
+    Route::get('/bank-details-edit', [ProfileController::class, 'bank_edit'])->name('edit.bank');
+
     Route::post('/mail-send', [MailController::class, 'send'])->name('mail.send');
 });
 

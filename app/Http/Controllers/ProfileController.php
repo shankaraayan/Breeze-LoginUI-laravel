@@ -111,9 +111,19 @@ class ProfileController extends Controller
 
     public function view_bank(Request $request)
     {
-        $bankDetails = BankDetails::where('user_id',auth()->user()->id)->first();
+        $bankDetails = BankDetails::where('user_id', auth()->user()->id)->first();
 
         return view('bank-details.view', [
+            'user' => $request->user(),
+            'bankDetails' => $bankDetails,
+        ]);
+    }
+
+    public function bank_edit(Request $request)
+    {
+        $bankDetails = BankDetails::where('user_id', auth()->user()->id)->first();
+
+        return view('bank-details.edit', [
             'user' => $request->user(),
             'bankDetails' => $bankDetails,
         ]);
@@ -122,6 +132,7 @@ class ProfileController extends Controller
     public function bank_update(Request $request)
     {
         $request->user()->bankDetails()->updateOrCreate(
+            ['user_id' => auth()->user()->id,],
             [
                 'user_id' => auth()->user()->id,
                 'bank_name' => $request->bank_name,
