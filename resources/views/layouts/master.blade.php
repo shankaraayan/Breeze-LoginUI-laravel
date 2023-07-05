@@ -156,47 +156,49 @@
                     <h4 class="heading">Hindu Rashtrya Sangthan</h4>
                     <h5 class="sub-heading">Rashtrya Ekta</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Hindu Rashtrya History</a></li>
-                        <li class="list-group-item"><a href="#">Sangthan History</a></li>
-                        <li class="list-group-item"><a href="#">Hindu Yuva Morcha</a></li>
-                        <li class="list-group-item"><a href="#">Other organization's Support</a></li>
+                        <li class="list-group-item"><a href="/about/Hindu Rashtrya History">Hindu Rashtrya History</a>
+                        </li>
+                        <li class="list-group-item"><a href="/about/Sangthan History">Sangthan History</a></li>
+                        <li class="list-group-item"><a href="/about/Hindu Yuva Morcha">Hindu Yuva Morcha</a></li>
+                        <li class="list-group-item"><a href="/about/Other organization's Support">Other organization's
+                                Support</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <h4 class="heading">Importent Links</h4>
                     <h5 class="sub-heading">Navigation</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Home</a></li>
-                        <li class="list-group-item"><a href="#">About</a></li>
-                        <li class="list-group-item"><a href="#">About Leaders</a></li>
-                        <li class="list-group-item"><a href="#">Donation</a></li>
-                        <li class="list-group-item"><a href="#">Contact us</a></li>
-                        <li class="list-group-item"><a href="#">Membership</a></li>
-                        <li class="list-group-item"><a href="#">Hindu Ekta Program</a></li>
+                        <li class="list-group-item"><a href="/">Home</a></li>
+                        <li class="list-group-item"><a href="/about">About</a></li>
+                        <li class="list-group-item"><a href="/teams">About Leaders</a></li>
+                        <li class="list-group-item"><a href="/donate">Donation</a></li>
+                        <li class="list-group-item"><a href="/contact">Contact us</a></li>
+                        <li class="list-group-item"><a href="/membership">Membership</a></li>
+                        <li class="list-group-item"><a href="/about/Hindu Ekta Program">Hindu Ekta Program</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <h4 class="heading">Members / Volunteers</h4>
                     <h5 class="sub-heading">Join us to help Hindu Ekta</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Login</a></li>
-                        <li class="list-group-item"><a href="#">Register</a></li>
-                        <li class="list-group-item"><a href="#">Apply for Membership</a></li>
-                        <li class="list-group-item"><a href="#">Join for volunteering</a></li>
-                        <li class="list-group-item"><a href="#">Take charge in your state</a></li>
-                        <li class="list-group-item"><a href="#">Apply for party post</a></li>
-                        <li class="list-group-item"><a href="#">Donation</a></li>
+                        <li class="list-group-item"><a href=".login">Login</a></li>
+                        <li class="list-group-item"><a href="/register">Register</a></li>
+                        <li class="list-group-item"><a href="/register">Apply for Membership</a></li>
+                        <li class="list-group-item"><a href="/register">Join for volunteering</a></li>
+                        <li class="list-group-item"><a href="/about/Party Post">Take charge in your state</a></li>
+                        <li class="list-group-item"><a href="/register">Apply for party post</a></li>
+
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <h4 class="heading">Hindu Rashtra</h4>
                     <h5 class="sub-heading">State wise</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="#">Bihar</a></li>
-                        <li class="list-group-item"><a href="#">Rajasthan</a></li>
-                        <li class="list-group-item"><a href="#">Uttar Pradesh</a></li>
-                        <li class="list-group-item"><a href="#">Delhi</a></li>
-                        <li class="list-group-item"><a href="#">Jharkhand</a></li>
+                        <li class="list-group-item"><a href="/about/state party Bihar">Bihar</a></li>
+                        <li class="list-group-item"><a href="/about/state party Rajasthan">Rajasthan</a></li>
+                        <li class="list-group-item"><a href="/about/state party Uttar Pradesh">Uttar Pradesh</a></li>
+                        <li class="list-group-item"><a href="/about/state party Delhi">Delhi</a></li>
+                        <li class="list-group-item"><a href="/about/state party Jharkhand">Jharkhand</a></li>
                     </ul>
                 </div>
             </div>

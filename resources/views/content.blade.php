@@ -41,18 +41,18 @@
                 {{-- <h3 class="pb-3 mb-4 font-italic border-bottom">
                     About Us
                 </h3> --}}
+                {{-- @dd($content); --}}
+                {{-- @foreach ($content as $section) --}}
+                @foreach ($content->section as $content)
+                    {{-- @dd($content); --}}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">{{ $content['subheading'] }}</h2>
 
-                @foreach ($about as $section)
-                    @foreach ($section->section as $content)
-                        {{-- @dd($content); --}}
-                        <div class="blog-post">
-                            <h2 class="blog-post-title">{{ $content['subheading'] }}</h2>
-
-                            <p>
-                                {!! $content['content'] !!}
-                            </p>
-                        </div>
-                    @endforeach
+                        <p>
+                            {!! $content['content'] !!}
+                        </p>
+                    </div>
+                    {{-- @endforeach --}}
                 @endforeach
 
             </div>

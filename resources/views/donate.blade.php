@@ -33,9 +33,9 @@
 
                                         <br>
                                         <div class="contact-form">
-                                            <form action="" id="contact-form" data-gtm-form-interact-id="0">
-                                                <input type="hidden" name="_token"
-                                                    value="UeyiSuyrvOJW9mpAPPW6rTE7K48qzzSlDqiYihhN">
+                                            <form action="" method="post" id="contact-form"
+                                                data-gtm-form-interact-id="0">
+                                                @csrf
                                                 <div class="form-group mb-3 mb-xl-4">
                                                     <input class="form-control" type="text" name="name" id="name"
                                                         required="" placeholder="Name:"
@@ -59,7 +59,7 @@
 
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary btn-icon-right buy_now1">
+                                                <button type="button" class="btn btn-primary btn-icon-right buy_now1">
                                                     <span>Donate Now</span>
                                                     <i class="icofont-double-right icon"></i>
                                                 </button>
@@ -121,7 +121,7 @@
         });
 
         $(document).on('click', '.buy_now1', function(e) {
-            var totalAmount = parseFloat($('.donation').val());
+            var totalAmount = parseFloat($('#custom').val());
             var data = {
                 "_token": $('meta[name="csrf-token"]').attr('content'),
                 "scheme": "Donation",

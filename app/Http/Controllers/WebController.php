@@ -36,8 +36,8 @@ class WebController extends Controller
 
     public function event()
     {
-        $about = AboutUs::get();
-        return view('event')->with(compact('about'));
+        $blogs = Blog::get();
+        return view('event')->with(compact('blogs'));
     }
 
     public function gallery()
@@ -45,6 +45,17 @@ class WebController extends Controller
         $gallery = Gallery::get();
         // dd($gallery);
         return view('gallery')->with(compact('gallery'));
+    }
+
+    public function dynamic($dynamic)
+    {
+        $about = AboutUs::get();
+        $content = AboutUs::get()->first(function ($item) use ($dynamic) {
+            return is_array($item['section']) && in_array($dynamic, array_column($item['section'], 'title'));
+        });
+        if (!$content || !isset($content->id)) abort(404);
+        // dd($content);
+        return view('content')->with(compact('content', 'about'));
     }
 
     public function donate()

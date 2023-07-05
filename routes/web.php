@@ -23,6 +23,7 @@ Route::get('/event', [WebController::class, 'event']);
 Route::get('/gallery', [WebController::class, 'gallery']);
 Route::get('/donate', [WebController::class, 'donate']);
 
+Route::get('/about/{content}', [WebController::class, 'dynamic']);
 
 
 Route::get('/dashboard', function () {

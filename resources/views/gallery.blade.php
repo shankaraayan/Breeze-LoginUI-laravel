@@ -16,7 +16,7 @@
                     Gallery
                 </h3>
                 <section class="container">
-                    <div class="row">
+                    <div class="row">content
 
                         @foreach ($gallery as $gallery)
                             {{-- @dd($content['title']); --}}
