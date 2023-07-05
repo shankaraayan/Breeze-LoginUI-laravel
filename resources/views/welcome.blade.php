@@ -2,7 +2,6 @@
 @section('page_title', 'Home Page')
 @section('style')
 
-
 @endsection
 @section('body')
 
@@ -19,7 +18,7 @@
                 @foreach ($banners as $banner)
                     <div class="carousel-item @php if($banner->id == 1)echo 'active' @endphp">
                         <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                                                                                                                                                                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"> -->
+                                                                                                                                                                                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"> -->
                         <img style="width:100%" src="{{ env('APP_DOMAIN') }}/storage/{{ $banner->img }}">
                         <!-- </svg> -->
 
@@ -76,7 +75,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <div class="p-5">

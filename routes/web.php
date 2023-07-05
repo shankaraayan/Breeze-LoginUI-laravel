@@ -26,6 +26,10 @@ Route::get('/donate', [WebController::class, 'donate']);
 Route::get('/about/{content}', [WebController::class, 'dynamic']);
 
 
+Route::get('/our-footprints', function () {
+    return view('our-footprint');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

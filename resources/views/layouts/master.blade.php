@@ -162,6 +162,7 @@
                         <li class="list-group-item"><a href="/about/Hindu Yuva Morcha">Hindu Yuva Morcha</a></li>
                         <li class="list-group-item"><a href="/about/Other organization's Support">Other organization's
                                 Support</a></li>
+                        <li class="list-group-item"><a href="/our-footprints">Our Footprints</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
